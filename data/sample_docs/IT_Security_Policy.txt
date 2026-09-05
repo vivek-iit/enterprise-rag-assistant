@@ -1,0 +1,72 @@
+IT SECURITY POLICY
+==================
+Effective Date: 01 January 2024
+Document Owner: Chief Information Security Officer (CISO)
+Classification: Internal Use Only
+Review Cycle: Annual
+
+1. PASSWORD POLICY
+------------------
+All employees must adhere to the following password guidelines:
+- Passwords must be at least 12 characters long.
+- Passwords must contain uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*).
+- Passwords must not include the employee's name, username, or date of birth.
+- Passwords expire every 90 days; a reminder is sent 10 days before expiry.
+- The last 10 passwords may not be reused.
+- Multi-Factor Authentication (MFA) is mandatory for all corporate systems and email accounts.
+- Passwords must never be shared. Report any suspected credential compromise immediately.
+- Use of the company-approved password manager (LastPass Enterprise) is strongly encouraged.
+
+2. VPN USAGE POLICY
+-------------------
+- All remote access to internal systems must be conducted exclusively via the corporate VPN.
+- Employees must connect to vpn.company.internal before accessing any internal resource outside the office.
+- Split-tunnelling is disabled; all traffic routes through the corporate VPN when connected.
+- Personal devices must have the latest OS security patches before connecting to the corporate VPN.
+- VPN credentials are personal and non-transferable. Suspected compromise must be reported within 1 hour.
+- VPN connection logs are retained for 12 months and audited quarterly by the IT Security team.
+
+3. CLEAN DESK POLICY
+--------------------
+- No confidential documents or sensitive materials may be left visible on desks when away from the workstation.
+- Screens must be locked (Windows: Win+L; macOS: Cmd+Ctrl+Q) whenever leaving the desk, even briefly.
+- Printed confidential documents must be collected from the printer immediately and stored securely.
+- Sensitive printed materials must be disposed of using the cross-cut shredders on each floor.
+- Portable storage devices (USB drives, external hard disks) are prohibited unless approved by IT Security.
+- Whiteboards containing confidential information must be fully erased at the end of each working day.
+- Visitor access badges must be visibly worn at all times within the office premises.
+
+4. INCIDENT RESPONSE CONTACTS
+------------------------------
+Report any suspected security incident immediately to the following contacts:
+
+Primary Contact:
+  IT Security Helpdesk
+  Email : security@company.internal
+  Phone : +1-800-SEC-HELP (800-732-4357)
+  Hours : 24 x 7 x 365
+
+Escalation Contact:
+  Chief Information Security Officer (CISO)
+  Name  : Jane Doe
+  Email : ciso@company.internal
+  Phone : +1-800-555-0199
+
+Data Breach / Privacy Concerns:
+  Data Protection Officer (DPO)
+  Email : dpo@company.internal
+  Phone : +1-800-555-0177
+
+Emergency (Active Threat / Ransomware):
+  Internal Extension : 9911
+  External Line      : +1-800-555-9911
+  The Incident Response Team (IRT) will be activated within 15 minutes of notification.
+
+5. ACCEPTABLE USE
+-----------------
+- Company IT assets (laptops, mobiles, email) are primarily for business use.
+- Limited personal use is permitted provided it does not impact productivity or violate other policies.
+- The following are strictly prohibited: accessing illegal content, torrenting, cryptocurrency mining,
+  and installing unauthorized software on company devices.
+- All company-owned devices are subject to monitoring and periodic security audits.
+- Violation of this policy may result in disciplinary action, up to and including termination.

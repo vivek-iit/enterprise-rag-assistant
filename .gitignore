@@ -1,0 +1,41 @@
+# ── Secrets — NEVER commit ────────────────────────────────────────────────────
+.env
+
+# ── Python bytecode & caches ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+venv/
+.venv/
+ENV/
+env/
+
+# ── Generated artefacts (large binaries — rebuild via Re-index button) ────────
+data/faiss_index/
+
+# ── Application logs ──────────────────────────────────────────────────────────
+logs/
+
+# ── pytest cache ──────────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── IDEs ──────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS artefacts ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Build / packaging ─────────────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
