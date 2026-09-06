@@ -134,7 +134,7 @@ Document Ingestion Pipeline (scripts/generate_sample_data.py + src/ingestion.py)
 | **Sparse Index** | BM25 (`rank-bm25`) | 0.2.2 | TF-IDF keyword-based retrieval |
 | **Reranker** | `cross-encoder/ms-marco-MiniLM-L-6-v2` | via sentence-transformers 6.0.0 | Precision reranking of candidate passages (configurable via `CROSS_ENCODER_MODEL`) |
 | **LLM (OpenAI)** | ChatOpenAI | via langchain-openai 1.6.0 | Answer generation (GPT-3.5-Turbo or GPT-4) |
-| **LLM (Google)** | ChatGoogleGenerativeAI | via langchain-google-genai 4.3.5 | Answer generation (Gemini 1.5 Flash / Pro) |
+| **LLM (Google)** | ChatGoogleGenerativeAI | via langchain-google-genai 4.3.5 | Answer generation (Gemini 2.5 Flash / Pro) |
 | **UI** | Streamlit | 1.62.0 | Conversational web interface |
 | **PDF Parsing** | pypdf | 6.16.1 | Page-level document loading |
 | **DOCX Parsing** | docx2txt | 0.9 | Word document text extraction |
@@ -236,7 +236,7 @@ GOOGLE_API_KEY=AIza...          # https://aistudio.google.com/apikey
 
 # Optional overrides (defaults shown)
 OPENAI_MODEL=gpt-3.5-turbo
-GOOGLE_MODEL=gemini-1.5-flash   # "gemini-pro" was deprecated Feb 2025
+GOOGLE_MODEL=gemini-2.5-flash   # "gemini-1.5-flash" unavailable on current API; "gemini-pro" deprecated Feb 2025
 HF_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
 CROSS_ENCODER_MODEL=cross-encoder/ms-marco-MiniLM-L-6-v2
 CHUNK_SIZE=500
@@ -256,7 +256,7 @@ LOGS_DIR=logs
 | `OPENAI_API_KEY` | *(empty)* | OpenAI API key |
 | `GOOGLE_API_KEY` | *(empty)* | Google Generative AI key |
 | `OPENAI_MODEL` | `gpt-3.5-turbo` | OpenAI model name |
-| `GOOGLE_MODEL` | `gemini-1.5-flash` | Google model name (`gemini-pro` deprecated Feb 2025) |
+| `GOOGLE_MODEL` | `gemini-2.5-flash` | Google model name (`gemini-1.5-flash` unavailable on current API; `gemini-pro` deprecated Feb 2025) |
 | `HF_EMBEDDING_MODEL` | `sentence-transformers/all-MiniLM-L6-v2` | Embedding model |
 | `CROSS_ENCODER_MODEL` | `cross-encoder/ms-marco-MiniLM-L-6-v2` | Reranker model (overridable without code changes) |
 | `CHUNK_SIZE` | `500` | Max characters per text chunk |
@@ -482,7 +482,7 @@ Unlimited history inflates prompts, increasing token cost and latency. A rolling
 All tunable parameters — including the new `CROSS_ENCODER_MODEL` — are declared as typed fields in a single `Settings` class using the v2 `SettingsConfigDict` API (no deprecated `Field(env=...)` syntax). pydantic-settings v2 automatically maps each field name to its uppercase environment variable (`chunk_size` → `CHUNK_SIZE`, `cross_encoder_model` → `CROSS_ENCODER_MODEL`, etc.), providing type validation, `.env` file support, and environment variable overrides without scattered `os.getenv()` calls throughout the codebase.
 
 ### 9. Dynamic LLM selection at runtime
-`_load_llm()` checks `OPENAI_API_KEY` first (streaming support), then `GOOGLE_API_KEY`, and raises a descriptive `RuntimeError` if neither is available — making the dependency explicit rather than failing silently at inference time. The default Google model is `gemini-1.5-flash` (`gemini-pro` was deprecated by Google in February 2025).
+`_load_llm()` checks `OPENAI_API_KEY` first (streaming support), then `GOOGLE_API_KEY`, and raises a descriptive `RuntimeError` if neither is available — making the dependency explicit rather than failing silently at inference time. The default Google model is `gemini-2.5-flash` (`gemini-1.5-flash` was found unavailable on the current Google AI Studio API key; `gemini-pro` was deprecated by Google in February 2025).
 
 ### 10. `RecursiveCharacterTextSplitter` with `add_start_index=True`
 The recursive splitter respects natural text boundaries (paragraphs, sentences) before falling back to characters, producing more semantically coherent chunks than fixed-size splitting. `add_start_index=True` adds a character-offset key to each chunk's metadata for precise location tracking.

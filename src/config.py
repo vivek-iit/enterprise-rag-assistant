@@ -35,7 +35,8 @@ try:
         # ── LLM model names ───────────────────────────────────────────────────
         openai_model: str = "gpt-3.5-turbo"
         # NOTE: "gemini-pro" was deprecated by Google in Feb 2025.
-        #       Default updated to "gemini-1.5-flash" (stable, low-latency).
+        #       "gemini-1.5-flash" is unavailable on the current Google AI Studio API.
+        #       Default is "gemini-2.5-flash" — confirmed working and stable.
         google_model: str = "gemini-2.5-flash"
         hf_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
         # FIX 6: cross-encoder model is now a configurable setting, no longer
@@ -62,7 +63,7 @@ except ImportError:
         top_k: int = int(os.getenv("TOP_K", 4))
 
         openai_model: str = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
-        # NOTE: "gemini-pro" was deprecated by Google in Feb 2025.
+        # NOTE: "gemini-pro" deprecated Feb 2025. "gemini-1.5-flash" unavailable on current API.
         google_model: str = os.getenv("GOOGLE_MODEL", "gemini-2.5-flash")
         hf_embedding_model: str = os.getenv(
             "HF_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2"
