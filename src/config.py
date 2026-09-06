@@ -36,7 +36,7 @@ try:
         openai_model: str = "gpt-3.5-turbo"
         # NOTE: "gemini-pro" was deprecated by Google in Feb 2025.
         #       Default updated to "gemini-1.5-flash" (stable, low-latency).
-        google_model: str = "gemini-1.5-flash"
+        google_model: str = "gemini-2.5-flash"
         hf_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
         # FIX 6: cross-encoder model is now a configurable setting, no longer
         # hardcoded in retrieval.py.  Override via CROSS_ENCODER_MODEL in .env.
@@ -63,7 +63,7 @@ except ImportError:
 
         openai_model: str = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
         # NOTE: "gemini-pro" was deprecated by Google in Feb 2025.
-        google_model: str = os.getenv("GOOGLE_MODEL", "gemini-1.5-flash")
+        google_model: str = os.getenv("GOOGLE_MODEL", "gemini-2.5-flash")
         hf_embedding_model: str = os.getenv(
             "HF_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2"
         )
